@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シフト作成アプリケーション | 医療・介護・交代制勤務のための次世代AIシフト作成ソフト - KAZE Soft</title>
+  <meta name="description" content="医療・介護・福祉などの複雑なシフト管理を数理最適化ソルバーで自動化。夜勤明け制約、吸引資格、カップリング、Excel直接連携、休職日割り計算に対応した高精度シフト作成システム「シフト作成アプリケーション」。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ナビゲーションバー -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <path d="m9 16 2 2 4-4"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">シフト作成アプリケーション</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#features" class="nav-link">特徴・強み</a>
+        <a href="#functions" class="nav-link">充実の機能</a>
+        <a href="#workflow" class="nav-link">導入・運用手順</a>
+        <a href="#environment" class="nav-link">動作環境</a>
+        <a href="#pricing" class="nav-link">料金プラン</a>
+        <a href="#faq" class="nav-link">よくある質問</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+        <a href="#download" class="btn btn-primary">無料ダウンロード</a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="メニュー開閉">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>高度数理最適化ソルバー搭載</span>
+        </div>
+        <h1 class="hero-title">
+          毎月何十時間もかかる<br>
+          シフト作成を、<span class="text-gradient">わずか数分</span>に。
+        </h1>
+        <p class="hero-desc">
+          医療・介護・福祉現場の過酷で複雑なルール（夜勤明け、連勤上限、吸引資格者の配置、ペア組み、希望休）をすべて数理モデル化。誰でも迷わず使える直感的なExcelライクUIと強力な自動生成エンジンが、公平で最適な勤務表を一瞬で導き出します。
+        </p>
+
+        <div class="hero-badges">
+          <div class="badge-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Windows 11 / 10 完全対応</span>
+          </div>
+          <div class="badge-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>個人情報安心の完全ローカル動作</span>
+          </div>
+          <div class="badge-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Excel希望票の自動インポート対応</span>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#download" class="btn btn-hero-primary">
+            <span>無料版を今すぐダウンロード</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#functions" class="btn btn-hero-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>機能・画面を見る</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- アプリプレビューUIモック -->
+      <div class="hero-visual">
+        <div class="app-window">
+          <div class="app-header">
+            <div class="app-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="app-title-bar">シフト作成システム - 入力設定エディタ</div>
+            <div class="app-status"><span class="status-indicator"></span>Ready</div>
+          </div>
+          <div class="app-body">
+            <!-- タブバー -->
+            <div class="mock-tabbar">
+              <span class="tab tab-green">期間</span>
+              <span class="tab tab-green">職員設定</span>
+              <span class="tab tab-green">前月勤務表</span>
+              <span class="tab tab-green">曜日ごとの希望勤務</span>
+              <span class="tab tab-green active">日ごとの希望勤務</span>
+              <span class="tab tab-pink">曜日ごとの必要人数</span>
+              <span class="tab tab-pink">日ごとの必要人数</span>
+              <span class="tab tab-orange">職員設定の重み</span>
+              <span class="tab tab-orange">各勤務の必要人数の重み</span>
+              <span class="tab tab-orange">勤務パターン</span>
+              <span class="tab tab-orange">勤務不足時</span>
+              <span class="tab tab-orange">吸引資格</span>
+              <span class="tab tab-orange">カップリング</span>
+              <span class="tab tab-yellow">色分け</span>
+              <span class="tab tab-yellow">表記変換</span>
+              <span class="tab tab-yellow">特殊表記変換</span>
+              <span class="tab tab-yellow">集計項目</span>
+              <span class="tab-help">？</span>
+            </div>
+            <!-- 表コンテンツ -->
+            <div class="mock-table-wrapper">
+              <table class="mock-table">
+                <thead>
+                  <tr>
+                    <th class="sticky-col">グループ</th>
+                    <th class="sticky-col2">職員名</th>
+                    <th>1(水)</th><th>2(木)</th><th>3(金)</th><th>4(土)</th><th>5(日)</th><th>6(月)</th><th>7(火)</th><th>8(水)</th><th>9(木)</th><th>10(金)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="sticky-col">看護</td>
+                    <td class="sticky-col2">佐藤</td>
+                    <td></td><td></td><td class="shift-off">休</td><td></td><td></td><td class="shift-night">夜</td><td class="shift-ake">明</td><td class="shift-off">休</td><td></td><td></td>
+                  </tr>
+                  <tr>
+                    <td class="sticky-col">看護</td>
+                    <td class="sticky-col2">鈴木</td>
+                    <td class="shift-night">夜</td><td class="shift-ake">明</td><td class="shift-off">休</td><td></td><td></td><td></td><td></td><td></td><td class="shift-night">夜</td><td class="shift-ake">明</td>
+                  </tr>
+                  <tr>
+                    <td class="sticky-col">介護1</td>
+                    <td class="sticky-col2">田中</td>
+                    <td></td><td class="shift-early">早</td><td></td><td class="shift-late">遅</td><td class="shift-off">休</td><td class="shift-off">休</td><td></td><td class="shift-early">早</td><td></td><td></td>
+                  </tr>
+                  <tr>
+                    <td class="sticky-col">介護1</td>
+                    <td class="sticky-col2">高橋</td>
+                    <td class="shift-off">休</td><td></td><td></td><td></td><td class="shift-night">夜</td><td class="shift-ake">明</td><td class="shift-off">休</td><td></td><td></td><td class="shift-night">夜</td>
+                  </tr>
+                  <tr>
+                    <td class="sticky-col">介護2</td>
+                    <td class="sticky-col2">伊藤</td>
+                    <td></td><td></td><td></td><td class="shift-off">休</td><td class="shift-off">休</td><td></td><td></td><td></td><td></td><td></td>
+                  </tr>
+                  <tr>
+                    <td class="sticky-col">介護2</td>
+                    <td class="sticky-col2">渡辺</td>
+                    <td class="shift-early">早</td><td></td><td class="shift-late">遅</td><td></td><td></td><td class="shift-off">休</td><td class="shift-off">休</td><td></td><td class="shift-early">早</td><td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- コントロールバー -->
+            <div class="mock-footer">
+              <div class="mock-btn-group">
+                <span class="mock-btn btn-blue">レイアウト切替 (タブ ↔ サイドバー)</span>
+                <span class="mock-btn btn-blue">簡易↔詳細</span>
+                <span class="mock-btn">環境設定</span>
+                <span class="mock-btn btn-green">公休・勤務日<br>日割計算</span>
+                <span class="mock-btn btn-green">同期</span>
+              </div>
+              <div class="mock-btn-group center-btn">
+                <span class="mock-btn btn-create">作成</span>
+              </div>
+              <div class="mock-btn-group">
+                <span class="mock-btn btn-green">インポート ▾</span>
+                <span class="mock-btn btn-green">設定の読込</span>
+                <span class="mock-btn btn-green">設定を保存</span>
+                <span class="mock-btn">このアプリについて ▾</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 悩みと解決（Problem & Solution） -->
+  <section class="section problems-section" id="problems">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">現場のシフト管理者を悩ませる課題</span>
+        <h2 class="section-title">こんなシフト作成のストレス、抱えていませんか？</h2>
+        <p class="section-desc">毎月締め切り前に頭を抱え、修正を繰り返す現場のリアルな課題をすべて解決します。</p>
+      </div>
+
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">❌</div>
+          <h3>制約が多すぎてパズルが解けない</h3>
+          <p>「夜勤明けの翌日は必ず休み」「5連勤の禁止」「吸引資格者を各フロアに必ず1名以上配置」など条件が複雑に絡み合い、手作業では破綻してしまう。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">❌</div>
+          <h3>希望休の重複と不公平感の解消</h3>
+          <p>職員の連休希望や休日希望が集中し、誰かを優遇すると他の職員から不満が出る。調整のための人間関係ストレスが重い。</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">❌</div>
+          <h3>市販ソフトは高額＆設定が難しすぎる</h3>
+          <p>大手のシフト管理ソフトは初期費用・月額が高額で、しかも設定項目が難解すぎて現場で使いこなせず結局Excelに戻ってしまう。</p>
+        </div>
+      </div>
+
+      <div class="solution-banner">
+        <div class="solution-content">
+          <div class="solution-badge">KAZE Soft の解決策</div>
+          <h3>「シフト作成アプリケーション」なら、すべて全自動＆直感設定！</h3>
+          <p>Excel感覚でルールを入力し、「作成」ボタンを押すだけ。最新の数理最適化ソルバーが数十万通りの組み合わせを一瞬で計算し、全員が納得する最もバランスの良い勤務表を出力します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6大特徴（Key Features） -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">選ばれる理由</span>
+        <h2 class="section-title">シフト作成アプリケーションが誇る 6つの強み</h2>
+        <p class="section-desc">長年の現場フィードバックを元に磨き抜かれた、実践的かつ高度な機能群。</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+          <h3>超高速・高精度 数理最適化ソルバー</h3>
+          <p>シフトエンジン205を搭載。膨大な制約条件を数理計画モデルとして瞬時に解き明かし、完成度（充足率スコア）を数値でリアルタイム表示します。</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>資格・吸引・カップリング完全対応</h3>
+          <p>「吸引等資格者の必須配置」「相性の良い/悪い職員の同シフト制御」「新人見習いと指導役のペアリング」など、現場の人的要件を完璧に満たします。</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </div>
+          <h3>直感的なExcelライクUI & 全シート同期</h3>
+          <p>タブ／サイドバー切替、簡易・詳細モード、オートフィル、色分け設定、アンドゥ・リドゥを完備。職員情報を1箇所変えれば「同期」で全シートへ一発反映！</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+          </div>
+          <h3>きめ細やかな重み付け & 勤務不足時ルール</h3>
+          <p>「絶対禁止」から「できるだけ避けたい（重み調整）」まで段階的に設定可能。どうしても人数が足りない日の自動代替パターンも定義できます。</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <h3>Excelインポート & 休職時の公休日割計算</h3>
+          <p>職員から集めたExcel希望票や前月実績を一括インポート。太字セルの差分だけを取り込む再インポートや、月途中休職の公休自動日割り計算にも標準対応。</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon bg-red">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>完全ローカル実行 & 安心のセキュリティ</h3>
+          <p>大切な職員の個人情報や勤務実績はすべてPCローカル内で完結。外部クラウドにデータが送信されないため、院内・施設内ネットワークでも安心して導入可能です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 機能詳細・タブデモ（Interactive Function Section） -->
+  <section class="section functions-section" id="functions">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">現場のあらゆる要求に応える</span>
+        <h2 class="section-title">直感操作で管理できる多彩な設定シート</h2>
+        <p class="section-desc">シフト作成アプリケーションに搭載されている主要な設定画面と機能をご紹介します。</p>
+      </div>
+
+      <div class="function-tabs-container">
+        <!-- タブボタン -->
+        <div class="function-tab-nav">
+          <button class="f-tab-btn active" data-tab="tab-staff">👤 職員設定 & 期間</button>
+          <button class="f-tab-btn" data-tab="tab-wish">📅 希望勤務 & 必要人数</button>
+          <button class="f-tab-btn" data-tab="tab-pattern">⚙️ 勤務パターン & 重み</button>
+          <button class="f-tab-btn" data-tab="tab-special">🛡️ 資格・カップリング・見習い</button>
+          <button class="f-tab-btn" data-tab="tab-export">📊 集計・表記変換・出力</button>
+        </div>
+
+        <!-- タブコンテンツ 1 -->
+        <div class="f-tab-pane active" id="tab-staff">
+          <div class="f-pane-grid">
+            <div class="f-pane-text">
+              <h3>職員情報の統合管理と自動日割計算</h3>
+              <p>職員名、所属グループ（病棟・フロア・チーム等）、勤務適性（早番・日勤・遅番・夜勤など）を一元管理します。</p>
+              <ul class="feature-list">
+                <li><strong>ワンクリック同期：</strong>職員の追加・削除・並び替えを行うと、全関連シートへ自動で名前と行構造が反映されます。</li>
+                <li><strong>休職時の公休・勤務日 日割り計算：</strong>月の途中で休職・復職が発生した場合、対象月日数で按分して自動算出（切り捨て/切り上げ/四捨五入の端数処理も対応）。</li>
+                <li><strong>前月勤務表の自動引き継ぎ：</strong>月末から月初への連勤防止、夜勤明けの連続ルールを前月実績からシームレスに連携。</li>
+              </ul>
+            </div>
+            <div class="f-pane-card">
+              <div class="card-tag">職員設定画面のポイント</div>
+              <div class="setting-row"><span>職員追加 / 削除</span><span class="badge-blue">右クリック即時反映</span></div>
+              <div class="setting-row"><span>グループ分類</span><span class="badge-green">複数チーム対応</span></div>
+              <div class="setting-row"><span>休職フラグ</span><span class="badge-purple">「-」入力で日割り按分</span></div>
+              <div class="setting-row"><span>前月データのインポート</span><span class="badge-orange">Excelから直接読込</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- タブコンテンツ 2 -->
+        <div class="f-tab-pane" id="tab-wish">
+          <div class="f-pane-grid">
+            <div class="f-pane-text">
+              <h3>日別・曜日別の柔軟な希望と必要人数設定</h3>
+              <p>スタッフごとの多様な希望や、曜日・イベント・繁忙日ごとの必要人員をきめ細かくコントロールできます。</p>
+              <ul class="feature-list">
+                <li><strong>日ごとの希望勤務：</strong>「休み希望」「夜勤希望」「有休」などをセル入力、またはExcel希望票から一括インポート。</li>
+                <li><strong>曜日ごとの希望勤務：</strong>「毎週水曜日は休み」「日曜は日勤不可」といった固定の週間パターンを職員ごとに設定。</li>
+                <li><strong>曜日別 & 日別必要人数：</strong>基本となる曜日別人数のベースに加え、祝日やカンファレンス日などの特定日増減を日別シートで上書き設定可能。</li>
+              </ul>
+            </div>
+            <div class="f-pane-card">
+              <div class="card-tag">希望と人数設定</div>
+              <div class="setting-row"><span>希望票Excel取込</span><span class="badge-blue">ドラッグ＆ドロップ感覚</span></div>
+              <div class="setting-row"><span>差分インポート</span><span class="badge-green">太字セルのみ再取込</span></div>
+              <div class="setting-row"><span>曜日別ベース</span><span class="badge-purple">月〜日・祝の基準人数</span></div>
+              <div class="setting-row"><span>特定日例外</span><span class="badge-orange">日別で上書き増減</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- タブコンテンツ 3 -->
+        <div class="f-tab-pane" id="tab-pattern">
+          <div class="f-pane-grid">
+            <div class="f-pane-text">
+              <h3>複雑なシフト順序制約と優先度の重み付け</h3>
+              <p>現場特有の「やってはいけない勤務の並び」や「優先したい希望」を数理制約として厳密に定義できます。</p>
+              <ul class="feature-list">
+                <li><strong>勤務パターン（禁止・必須）：</strong>「夜勤→日勤の禁止」「遅番→早番の禁止」「最大連続勤務日数（例: 4連勤まで）」などを自由に定義。</li>
+                <li><strong>職員設定・必要人数の重み：</strong>「絶対遵守」から「可能な限り満たす（数値重み）」まで調整可能。ソルバーが全体の満足度を最大化します。</li>
+                <li><strong>勤務不足時の代替ルール：</strong>人員不足発生時に「どの勤務を優先して埋めるか」「誰を代替に回すか」の救済条件をあらかじめセット。</li>
+              </ul>
+            </div>
+            <div class="f-pane-card">
+              <div class="card-tag">制約とソルバー最適化</div>
+              <div class="setting-row"><span>夜勤明けルール</span><span class="badge-blue">夜→明→休 自動適用</span></div>
+              <div class="setting-row"><span>連続勤務制限</span><span class="badge-green">最大N連勤まで</span></div>
+              <div class="setting-row"><span>希望の重み</span><span class="badge-purple">1〜100・絶対実施</span></div>
+              <div class="setting-row"><span>不足時代替</span><span class="badge-orange">安全策ルール</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- タブコンテンツ 4 -->
+        <div class="f-tab-pane" id="tab-special">
+          <div class="f-pane-grid">
+            <div class="f-pane-text">
+              <h3>医療・介護現場に不可欠な特殊制約</h3>
+              <p>法的な資格配置義務や、現場の人間関係・教育体制を強力にバックアップする専用シートを完備。</p>
+              <ul class="feature-list">
+                <li><strong>吸引等資格者シート：</strong>夜勤や各フロアで法的に必須となる「喀痰吸引等資格者」や「リーダー看護師」の最低人数を確実に確保。</li>
+                <li><strong>カップリングシート：</strong>「必ず同じ勤務に入るペア（相性◎・指導）」または「絶対に同シフトにしないペア（相性NG・業務分散）」を指定。</li>
+                <li><strong>見習い・教育機能：</strong>新入職員の研修期間中、ベテラン指導者と同じシフトになるよう自動追従。</li>
+              </ul>
+            </div>
+            <div class="f-pane-card">
+              <div class="card-tag">特殊現場対応機能</div>
+              <div class="setting-row"><span>吸引資格者の必置</span><span class="badge-blue">フロア別・夜勤別</span></div>
+              <div class="setting-row"><span>同伴・分離カップリング</span><span class="badge-green">ペア・グループ指定</span></div>
+              <div class="setting-row"><span>見習い・指導追従</span><span class="badge-purple">OJT支援機能</span></div>
+              <div class="setting-row"><span>色分けハイライト</span><span class="badge-orange">視認性抜群のGUI</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- タブコンテンツ 5 -->
+        <div class="f-tab-pane" id="tab-export">
+          <div class="f-pane-grid">
+            <div class="f-pane-text">
+              <h3>視認性の高い勤務表出力とリアルタイム集計</h3>
+              <p>作成結果は美しくフォーマットされたExcelファイルとして即時保存・出力が可能です。</p>
+              <ul class="feature-list">
+                <li><strong>色分け & 表記変換：</strong>勤務種別ごとのカスタム背景色や、「日勤」→「日」、「早番1」→「早」などの略称変換でパッと見やすい表を実現。</li>
+                <li><strong>リアルタイム集計項目：</strong>公休日数、夜勤回数、早番回数、総勤務日数、土日出勤数などを自動集計して右側に一覧表示。</li>
+                <li><strong>完成度スコアの可視化：</strong>希望充足率や制約達成度を100点満点でスコアリング。複数の候補パターンから最も良い勤務表を選択可能。</li>
+              </ul>
+            </div>
+            <div class="f-pane-card">
+              <div class="card-tag">出力・集計機能</div>
+              <div class="setting-row"><span>Excel形式出力</span><span class="badge-blue">罫線・色分けそのまま</span></div>
+              <div class="setting-row"><span>表記変換・特殊変換</span><span class="badge-green">現場の呼称に統一</span></div>
+              <div class="setting-row"><span>個人別集計列</span><span class="badge-purple">公休/夜勤/合計</span></div>
+              <div class="setting-row"><span>完成度表示</span><span class="badge-orange">スコアで品質保証</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 運用フロー（Workflow） -->
+  <section class="section workflow-section" id="workflow">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">迷わないシンプル操作</span>
+        <h2 class="section-title">毎月の作成はたったの4ステップ</h2>
+        <p class="section-desc">前月の設定を引き継げるので、毎月ゼロから入力し直す手間は一切不要です。</p>
+      </div>
+
+      <div class="workflow-steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">📂</div>
+          <h3>設定の読込 & 職員更新</h3>
+          <p>「設定の読込」で前月状態を復元。今月の「期間」を合わせ、職員の入退職があれば修正して「同期」ボタンを押します。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">📥</div>
+          <h3>希望勤務・前月表の取込</h3>
+          <p>「インポート」からスタッフの希望休や前月実績Excelを読み込みます。必要に応じて特定日の必要人数を調整します。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">⚡</div>
+          <h3>「作成」ボタンをクリック</h3>
+          <p>制限時間や作成数を指定して実行。数理最適化ソルバーが自動で何万通りの計算を行い、最良の勤務表を導出します。</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-icon">✅</div>
+          <h3>結果確認 & Excel保存</h3>
+          <p>完成度スコアや集計列を確認し、Excelに出力。設定を保存して来月用のベースファイルとして保管します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 動作環境（System Requirements） -->
+  <section class="section env-section" id="environment">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">システム要件</span>
+        <h2 class="section-title">動作環境・推奨スペック</h2>
+        <p class="section-desc">一般的な業務PCで快適に動作するよう高度に最適化されています。</p>
+      </div>
+
+      <div class="env-table-wrapper">
+        <table class="env-table">
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>推奨動作環境</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="env-label">対応OS</td>
+              <td class="env-value">Windows 11 / Windows 10 (64bit)</td>
+              <td>最新のWindows Update適用を推奨</td>
+            </tr>
+            <tr>
+              <td class="env-label">CPU (プロセッサ)</td>
+              <td class="env-value">Intel Core i5 以上（第10世代以降） / AMD Ryzen 5 以上（3000番台以降）</td>
+              <td>6コア / 12スレッド以上推奨（ソルバー並列計算用）</td>
+            </tr>
+            <tr>
+              <td class="env-label">メモリ (RAM)</td>
+              <td class="env-value">8.0 GB 以上</td>
+              <td>大規模な施設・他アプリ同時起動時は16GB推奨</td>
+            </tr>
+            <tr>
+              <td class="env-label">ストレージ</td>
+              <td class="env-value">空き容量 1 GB 以上（SSD推奨）</td>
+              <td>設定ファイルおよび作成結果の保存用</td>
+            </tr>
+            <tr>
+              <td class="env-label">連携ソフトウェア</td>
+              <td class="env-value">Microsoft Excel 2007 以降</td>
+              <td>インポート・エクスポートファイルの閲覧・編集</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 料金プラン（Pricing） -->
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">選べるライセンス形態</span>
+        <h2 class="section-title">導入規模に合わせた柔軟なプラン</h2>
+        <p class="section-desc">まずは試用版で驚きの作成スピードと精度をご体感ください。</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Plan 1: 試用版 (Featured) -->
+        <div class="pricing-card featured">
+          <div class="popular-badge">全機能体験</div>
+          <div class="pricing-header">
+            <span class="plan-tag">期間限定フル機能</span>
+            <h3>試用版ライセンス</h3>
+            <div class="price">¥0 <span>/ 評価期間中</span></div>
+            <p class="plan-summary">製品版と同等のすべての高度機能をフルにご体験いただけます。</p>
+          </div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> <strong>全機能・全シートが無制限で利用可能</strong></li>
+            <li><span class="check">✓</span> 吸引資格・カップリング・見習い機能</li>
+            <li><span class="check">✓</span> 高度な勤務不足時代替ルール</li>
+            <li><span class="check">✓</span> 休職日割り計算 & 複数候補生成</li>
+            <li><span class="check">✓</span> 導入前の実データ検証・評価</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary btn-block">無料ダウンロード</a>
+        </div>
+
+        <!-- Plan 2: 有料版 -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <span class="plan-tag">本格運用</span>
+            <h3>製品版ライセンス</h3>
+            <div class="price">今後販売予定</div>
+            <p class="plan-summary">※製品版ライセンスは今後販売予定です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ（よくある質問） -->
+  <section class="section faq-section" id="faq">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">疑問をスッキリ解決</span>
+        <h2 class="section-title">よくあるご質問 (FAQ)</h2>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>夜勤明けの翌日を必ず休みにするなどの連続勤務ルールは設定できますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい、完全に設定可能です。「勤務パターン」シートにて「夜勤 → 明け → 休み」といった順序や、「最大連続勤務日数（例：4連勤まで）」を絶対禁止条件または重み付け条件として自由自在に登録できます。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>喀痰吸引資格者など、特定の資格を持つ職員を必ず配置できますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい。「吸引資格」シートにて資格保有者を登録し、日勤や夜勤ごとに最低何名の資格者が必要かを指定できます。ソルバーが資格保有者の配置を満たす組み合わせを自動計算します。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>月の途中で休職・復職するスタッフがいる場合、公休日数はどうなりますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>希望勤務シートに「-」を入力することで休職を指定でき、「公休・勤務日 日割計算」機能により、対象月の日数から自動で公休日数・必要勤務日数を按分計算します。端数処理（切り捨て/切り上げ/四捨五入）も設定可能です。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>職員から回収した既存のExcel希望票をそのまま読み込めますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>はい。「インポート」機能により、既存のExcelファイルから希望勤務や前月勤務表を取り込めます。さらに、修正された太字セルだけを上書き反映する「再インポート」機能も搭載しています。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>セキュリティ面は安全ですか？個人情報が外部に送信されることはありますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>本ソフトは完全ローカル環境で動作します。職員名や勤務表データが外部サーバーへ送信されることは一切ありませんので、個人情報保護や機密保持が厳しい病院・介護施設でも安心してお使いいただけます。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>もしどうしても条件を満たせない（人数が足りない）場合はどうなりますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>「勤務不足時」シートであらかじめ救済ルールを定義できるほか、作成設定で「完成度100%未満でもベストな解を出力する」設定が可能です。どの条件が何件未達成かも集計で一目で把握できます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA & ダウンロードセクション -->
+  <section class="section cta-section" id="download">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="cta-subtitle">簡単インストールですぐに試せる</span>
+          <h2 class="cta-title">シフト作成の苦労から、今すぐ解放されましょう。</h2>
+          <p class="cta-desc">
+            最新のシフト作成アプリケーションを今すぐ体験。面倒な会員登録なしで、無料版をお試しいただけます。
+          </p>
+          <div class="cta-buttons">
+            <a href="#contact" class="btn btn-cta-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>無料版をダウンロード</span>
+            </a>
+          </div>
+          <div class="cta-note">※ Windows 11 / 10 (64bit) 対応 | ZIPを解凍するだけですぐにご利用いただけます</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせセクション -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">ご意見ください</span>
+        <h2 class="section-title">ご意見・ご感想・ご要望</h2>
+      </div>
+
+      <div class="contact-grid">
+        <!-- 投稿フォーム -->
+        <form class="contact-form" id="bbs-form">
+          <div style="margin-bottom: 4px;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary);">✍️ 投稿フォーム</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">お気軽にメッセージをお寄せください。</p>
+          </div>
+          <div class="form-group">
+            <label for="bbs-name">お名前 / ニックネーム <span class="required">*</span></label>
+            <input type="text" id="bbs-name" class="form-input" placeholder="例：介護士A、シフト作成担当" required>
+          </div>
+          <div class="form-group">
+            <label for="bbs-type">投稿種別 <span class="required">*</span></label>
+            <select id="bbs-type" class="form-input" required>
+              <option value="ご感想">💡 ご感想</option>
+              <option value="ご意見">💬 ご意見</option>
+              <option value="ご要望">✨ ご要望</option>
+              <option value="その他">📝 その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bbs-msg">ご意見・ご感想・ご要望 <span class="required">*</span></label>
+            <textarea id="bbs-msg" class="form-input" rows="5" placeholder="シフト作成アプリケーションに関するご意見、使ってみたご感想、機能のご要望などをご自由にご記入ください。" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">掲示板に投稿する</button>
+        </form>
+
+        <!-- 掲示板一覧 -->
+        <div class="bbs-board">
+          <div class="bbs-header">
+            <h3>💬 掲示板（みなさまの声）</h3>
+            <span class="bbs-count" id="bbs-count">3件の投稿</span>
+          </div>
+          <div class="bbs-posts" id="bbs-posts">
+            <!-- 投稿一覧 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="nav-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">シフト作成アプリケーション</span>
+            <span class="brand-badge">KAZE Soft</span>
+          </div>
+        </div>
+        <p class="footer-text">
+          医療・介護・福祉現場の労働環境改善と業務効率化を数理最適化技術で支援します。
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>メニュー</h4>
+        <ul class="footer-links">
+          <li><a href="#features">特徴・強み</a></li>
+          <li><a href="#functions">充実の機能</a></li>
+          <li><a href="#workflow">運用フロー</a></li>
+          <li><a href="#environment">動作環境</a></li>
+          <li><a href="#pricing">料金プラン</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>サポート・規約</h4>
+        <ul class="footer-links">
+          <li><a href="#faq">よくある質問 (FAQ)</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#">ソフトウェア利用規約</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 KAZE Soft. All rights reserved. シフト作成アプリケーション</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
